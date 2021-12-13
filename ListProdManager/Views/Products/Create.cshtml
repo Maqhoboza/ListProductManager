@@ -1,0 +1,70 @@
+﻿@model ListProdManager.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+    <h1 class="between">Product</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProductCode" class="control-label"></label>
+                <input asp-for="ProductCode" class="form-control" />
+                <span asp-validation-for="ProductCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                @*<input asp-for="CategoryName" class="form-control" />*@
+                <select asp-for="CategoryName" id="Catagory-names">
+                    <option value="Choose-Category">Select Category.....</option>
+                    <option value="HIS424">HIS424</option>
+                    <option value="HUA323">HUA323</option>
+                    <option value="SAM121">SAM121</option>
+                    <option value="IPH666">IPH666</option>
+                </select>
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                @*<input asp-for="Image" class="form-control" />*@
+                <input asp-for="Image" class="form-control" type='file' onchange="readURL(this);" />
+                <img id="blah" src="http://placehold.it/180" alt="your image" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4">
+        <img src="~/images/ListProductManager-logos_transparent.png" class="rounded float-start" alt="..." id="leftlogo">
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Back to Product List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
